@@ -9,11 +9,13 @@ document.addEventListener("keydown", keyPressed);
 
 function keyPressed(event){
   makeSound(event.key);
+  buttonAnimation(event.key);
 }
 
 function buttonPressed(){
   var instrument = this.innerHTML;
   makeSound(instrument);
+  buttonAnimation(instrument);
 }
 
 
@@ -50,4 +52,13 @@ function makeSound(key){
     default:
       break;
     }
+}
+
+function buttonAnimation(eventkey){
+  var activeButton = document.querySelector("." + eventkey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function(){
+    activeButton.classList.remove("pressed");
+  },100);
 }
